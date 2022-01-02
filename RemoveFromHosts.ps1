@@ -8,7 +8,7 @@ Write-Host "About to remove $Hostname from hosts file" -ForegroundColor Gray
 $escapedHostname = [Regex]::Escape($Hostname)
 If (($hostsFile) -match ".*\s+$escapedHostname.*")  {
     Write-Host "$Hostname - removing from hosts file... " -ForegroundColor Yellow -NoNewline
-    $hostsFile -notmatch ".*\s+$escapedHostname.*" | Out-File $hostsFilePath 
+    $hostsFile -notmatch ".*\s+$escapedHostname.*" | Out-File -Encoding UTF8 $hostsFilePath
     Write-Host " done"
 } 
 Else {
